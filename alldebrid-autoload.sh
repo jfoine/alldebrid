@@ -39,18 +39,11 @@ while read file; do
       curl https://api.pushover.net/1/messages.json --form-string "token=$PUSHOVER_TOKEN" --form-string "user=$PUSHOVER_USER" --form-string "title=ALLDEBRID START" --form-string "message=$file
 
 Taille du fichier : $sizeh" --form-string "url=$url"
-      if [ -e /var/www/html/dl_active_flag ]; then
-        wget --trust-server-names -c -nv "$url"
-        curl https://api.pushover.net/1/messages.json --form-string "token=$PUSHOVER_TOKEN" --form-string "user=$PUSHOVER_USER" --form-string "title=ALLDEBRID END" --form-string "message=$file
+      wget --trust-server-names -c -nv "$url"
+      curl https://api.pushover.net/1/messages.json --form-string "token=$PUSHOVER_TOKEN" --form-string "user=$PUSHOVER_USER" --form-string "title=ALLDEBRID END" --form-string "message=$file
 
 $(df -h /mnt/SAMSUNG)" --form-string "url=$url"
-        echo "$(date '+%Y-%m-%d %H:%M:%S') - DL END : $file" | cat - $weblogs > temp && mv temp $weblogs
-      else
-        curl https://api.pushover.net/1/messages.json --form-string "token=$PUSHOVER_TOKEN" --form-string "user=$PUSHOVER_USER" --form-string "title=ALLDEBRID END (IGNORED)" --form-string "message=$file
-
-IGNORED!" --form-string "url=$url"
-      fi
-      echo "END"
+      echo "$(date '+%Y-%m-%d %H:%M:%S') - DL END : $file" | cat - $weblogs > temp && mv temp $weblogs
       echo "$url" >> "$rootdirectory/files.lst"
       echo "ask plex to reload section..."
       # https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
