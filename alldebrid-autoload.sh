@@ -30,7 +30,7 @@ while read file; do
     find "$file" -type d -empty -delete
   else
     if grep -Fxq "$url" "$rootdirectory/files.lst"; then
-      sleep 0 # echo "$url has been already downloaded !"
+      : # no-op
     else
       echo "$url to download..."
       echo "$(date '+%Y-%m-%d %H:%M:%S') - DL START : $file" | cat - $weblogs > temp && mv temp $weblogs
